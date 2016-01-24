@@ -1,0 +1,27 @@
+{
+  "name": "ng-toolqit",
+  "version": "1.0.0",
+  "description": "Complementary directives and filters useful for the everyday AngularJS development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matyax/ng-toolqit.git"
+  },
+  "keywords": [
+    "ng-toolkit",
+    "range",
+    "directives",
+    "filters",
+    "tools",
+    "angular"
+  ],
+  "author": "Matías Wenceslao Chomicki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matyax/ng-toolqit/issues"
+  },
+  "homepage": "https://github.com/matyax/ng-toolqit#readme"
+}
