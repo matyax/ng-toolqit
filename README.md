@@ -7,7 +7,7 @@ You can install this package using either `npm` or `bower`.
 
 ### npm
 
-```console
+```shell
 npm install ng-toolqit
 ```
 
@@ -25,7 +25,7 @@ angular.module('myApp', [require('ng-toolqit')]);
 
 ### bower
 
-```console
+```shell
 bower install ng-toolqit
 ```
 
@@ -43,3 +43,9 @@ angular.module('myApp', ['ngToolqit']);
 
 # Filters
 ## range
+
+```html
+<div ng-repeat="n in [] | range:10">
+  {{ n }}
+</div>
+```
