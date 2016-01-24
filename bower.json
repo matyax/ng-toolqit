@@ -15,9 +15,6 @@
     "angular"
   ],
   "homepage": "https://github.com/matyax/ng-toolqit",
-  "moduleType": [
-    "node"
-  ],
   "ignore": [
     "**/.*",
     "node_modules",
