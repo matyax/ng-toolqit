@@ -8,7 +8,7 @@
 (function(window, angular, undefined) {'use strict';
 
 
-angular.module('ngCookies', ['ng']).
+angular.module('ngToolqit', ['ng']).
 
   filter('range', function() {
     return function(range, quantity) {
