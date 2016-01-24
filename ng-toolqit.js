@@ -2,7 +2,7 @@
  * ng-toolqit
  * https://github.com/matyax/ng-toolqit
 
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';

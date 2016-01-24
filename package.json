@@ -1,6 +1,6 @@
 {
   "name": "ng-toolqit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Complementary directives and filters useful for the everyday AngularJS development",
   "main": "index.js",
   "scripts": {
