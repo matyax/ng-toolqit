@@ -1,8 +1,7 @@
 /*
  * ng-toolqit
  * https://github.com/matyax/ng-toolqit
-
- * Version: 1.1.0
+ * Version: 1.1.2
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
@@ -107,12 +106,16 @@
         var rulesHash = {
               '9': '[0-9]',
               'a': '[a-zA-Z]',
-              '\\*': '[a-zA-Z0-9]'
+              '*': '[a-zA-Z0-9]'
             },
             fullRegExp = rules, //Full pattern regular expression to test the entire input.
             output     = '';
 
         for (var rule in rulesHash) {
+          if (rule === '*') {
+            rule = '\\*';
+          }
+
           fullRegExp = fullRegExp.replace(new RegExp(rule, 'g'), rulesHash[rule]);
         }
 
@@ -126,7 +129,7 @@
             ruleChars  = rules.split('');
 
         inputChars.filter(function (value, i) {
-          if (! rulesHash[ruleChars[i]]) { //Literal string, insert and splice input value
+          if (! rulesHash[ruleChars[i]]) { //Literal character, insert in output
             output += ruleChars[i];
 
             if (value === ruleChars[i]) {

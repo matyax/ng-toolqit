@@ -29,6 +29,15 @@
       <section>
         <h3>Input formatter</h3>
 
+        <p>
+          Available patterns:
+        </p>
+        <ul>
+          <li>9: [0-9]</li>
+          <li>a: [A-Za-z]</li>
+          <li>*: [A-Za-z0-9]</li>
+        </ul>
+
         <article>
           <label>SSN</label>
           <input type="text" ng-model="ssnInput" format format-rules="999-99-9999">
