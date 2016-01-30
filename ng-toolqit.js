@@ -116,7 +116,7 @@
           fullRegExp = fullRegExp.replace(new RegExp(rule, 'g'), rulesHash[rule]);
         }
 
-        input = input.substring(0, rules.length);
+        input = input.substring(0, rules.length); //Cut the string to 'rule' size
 
         if (input.match(fullRegExp)) {
           return input; //No need to keep testing the input
