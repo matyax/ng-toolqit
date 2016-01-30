@@ -45,42 +45,40 @@
 
       return {
         require: 'ngModel',
-        link: function (scope, element, attr, ngModel) {
-          if (! attr.formatRules) {
-            throw new Error('Missing format rules.');
-          }
-
-          ngModel.$formatters.push(function (value) {
-            if (value) {
-              value = applyFormatRules(value, attr.formatRules);
-            }
-
-            return value;
-          });
-
-          ngModel.$parsers.push(function (value) {
-            value = applyFormatRules(value, attr.formatRules);
-
-            element.val(value);
-
-            return value;
-          });
-
-          var listener = function () {
-            element.val(
-              applyFormatRules(element.val(), attr.formatRules)
-            );
-          };
-
-          element.bind('change', listener);
-          element.bind('keydown', function(event) {
-              $browser.defer(listener);
-          });
-          element.bind('cut paste', function(event) {
-              $browser.defer(listener);
-          });
-        }
+        link: link
       };
+
+      function link(scope, element, attr, ngModel) {
+        if (! attr.formatRules) {
+          throw new Error('Missing format rules.');
+        }
+
+        ngModel.$formatters.push(function (value) {
+          return applyFormatRules(value, attr.formatRules);
+        });
+
+        ngModel.$parsers.push(function (value) {
+          value = applyFormatRules(value, attr.formatRules);
+
+          element.val(value);
+
+          return value;
+        });
+
+        var listener = function () {
+          element.val(
+            applyFormatRules(element.val(), attr.formatRules)
+          );
+        };
+
+        element.bind('change', listener);
+        element.bind('keydown', function() {
+            $browser.defer(listener);
+        });
+        element.bind('cut paste', function() {
+            $browser.defer(listener);
+        });
+      }
 
       /**
        * Apply a set of rules to a given string.
@@ -98,14 +96,15 @@
        * E.g. ssn: 999-99-9999
        */
       function applyFormatRules(input, rules) {
-
-        if (input === lastInput) {
+        if ((! input) || (input === lastInput)) {
           return input;
         }
 
         if (typeof input !== 'string') {
           input = input.toString();
         }
+
+        console.log('running');
 
         var rulesHash = {
               '9': '[0-9]',
