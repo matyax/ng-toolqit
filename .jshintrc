@@ -1,0 +1,15 @@
+{
+  "globals": {
+    "angular"     : false,
+    "console"     : false
+  },
+  "strict"        : "implied",
+  "quotmark"      : true,
+  "undef"         : true,
+  "unused"        : true,
+  "curly"         : true,
+  "eqeqeq"        : true,
+  "maxdepth"      : 4,
+  "maxstatements" : 15,
+  "browser"       : true
+}

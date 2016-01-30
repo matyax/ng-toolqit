@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="demoApp">
+  <head>
+    <title>ngToolqit demo page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script src="../ng-toolqit.js"></script>
+    <script src="/demos/module.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>ngToolqit demos</h1>
+
+      <h2>Filters</h2>
+
+      <section>
+        <h3>Filter range</h3>
+        <ul>
+          <li ng-repeat="i in [] | range:5">
+            {{ i }}
+          </li>
+        </ul>
+      </section>
+
+      <h2>Directives</h2>
+
+      <section>
+        <h3>Input formatter</h3>
+
+        <input type="text" ng-model="formatterInput" format format-rules="999-99-9999">
+
+        {{ formatterInput }}
+      </section>
+    </div>
+  </body>
+</html>
