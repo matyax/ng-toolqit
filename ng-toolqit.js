@@ -40,7 +40,9 @@
      * @description
      * Formats the input of an ngModel according to the given format rules.
      */
-    directive('format', [function () {
+    directive('format', ['$browser', function ($browser) {
+      var lastInput = null;
+
       return {
         require: 'ngModel',
         link: function (scope, element, attr, ngModel) {
@@ -48,12 +50,34 @@
             throw new Error('Missing format rules.');
           }
 
+          ngModel.$formatters.push(function (value) {
+            if (value) {
+              value = applyFormatRules(value, attr.formatRules);
+            }
+
+            return value;
+          });
+
           ngModel.$parsers.push(function (value) {
             value = applyFormatRules(value, attr.formatRules);
 
             element.val(value);
 
             return value;
+          });
+
+          var listener = function () {
+            element.val(
+              applyFormatRules(element.val(), attr.formatRules)
+            );
+          };
+
+          element.bind('change', listener);
+          element.bind('keydown', function(event) {
+              $browser.defer(listener);
+          });
+          element.bind('cut paste', function(event) {
+              $browser.defer(listener);
           });
         }
       };
@@ -74,6 +98,15 @@
        * E.g. ssn: 999-99-9999
        */
       function applyFormatRules(input, rules) {
+
+        if (input === lastInput) {
+          return input;
+        }
+
+        if (typeof input !== 'string') {
+          input = input.toString();
+        }
+
         var rulesHash = {
               '9': '[0-9]',
               'a': '[a-zA-Z]',
@@ -95,7 +128,7 @@
         var inputChars = input.split(''),
             ruleChars  = rules.split('');
 
-        inputChars.filter(function (value, i, inputChars) {
+        inputChars.filter(function (value, i) {
           if (! rulesHash[ruleChars[i]]) { //Literal string, insert and splice input value
             output += ruleChars[i];
 
@@ -111,6 +144,8 @@
 
           return false;
         });
+
+        lastInput = output;
 
         return output;
       }
