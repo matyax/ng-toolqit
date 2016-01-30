@@ -104,8 +104,6 @@
           input = input.toString();
         }
 
-        console.log('running');
-
         var rulesHash = {
               '9': '[0-9]',
               'a': '[a-zA-Z]',
