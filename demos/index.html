@@ -29,9 +29,18 @@
       <section>
         <h3>Input formatter</h3>
 
-        <input type="text" ng-model="formatterInput" format format-rules="999-99-9999">
+        <article>
+          <label>SSN</label>
+          <input type="text" ng-model="ssnInput" format format-rules="999-99-9999">
+          {{ ssnInput }}
+        </article>
 
-        {{ formatterInput }}
+        <article>
+          <label>Birthdate</label>
+          <input type="text" ng-model="dobInput" format format-rules="99/99/9999">
+          {{ dobInput }}
+        </article>
+
       </section>
     </div>
   </body>
