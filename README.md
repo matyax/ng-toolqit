@@ -49,3 +49,19 @@ angular.module('myApp', ['ngToolqit']);
   {{ n }}
 </div>
 ```
+
+# Directives
+## format
+
+Applies a given format to an ngModel in an input.
+
+Available rules:
+
+* 9: [0-9]
+* a: [A-Za-z]
+* *: [A-Za-z0-9]
+
+```html
+<input type="text" ng-model="ssnInput" format format-rules="999-99-9999">
+<input type="text" ng-model="dobInput" format format-rules="99/99/9999">
+```
